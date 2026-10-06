@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>遊戲測試工程師 | 個人簡歷</title>
+    <!-- 引入 Google Fonts 科技感字體 -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    
+    <style>
+        /* 全域樣式設定：電競暗色調與霓虹光芒 */
+        :root {
+            --bg-color: #0d0e12;
+            --card-bg: #161920;
+            --primary-color: #00ffcc; /* 科技青色 */
+            --secondary-color: #ff0055; /* 電競桃紅 */
+            --text-color: #ffffff;
+            --text-muted: #8b949e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Noto Sans TC', 'Orbitron', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* 響應式容器 */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* 主視覺區塊（Hero Section） */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+            border-bottom: 2px solid #1f2430;
+            background: radial-gradient(circle at center, #1a1f2c 0%, var(--bg-color) 70%);
+        }
+
+        .avatar-container {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        /* 大頭貼外框的霓虹呼吸燈效果 */
+        .avatar {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-color);
+            box-shadow: 0 0 20px var(--primary-color), inset 0 0 20px var(--primary-color);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tag {
+            background-color: rgba(0, 255, 204, 0.1);
+            color: var(--primary-color);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            border: 1px solid var(--primary-color);
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .current-job {
+            font-size: 1.2rem;
+            color: #ffdd57;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .current-company {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* 主要內容排版（響應式網格） */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        /* 區塊卡片樣式 */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid #252a37;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary-color);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            border-left: 4px solid var(--secondary-color);
+            padding-left: 10px;
+            font-weight: bold;
+        }
+
+        /* 經歷清單樣式 */
+        .timeline {
+            list-style: none;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 25px;
+        }
+
+        .timeline-item::before {
+            content: "◆";
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            text-shadow: 0 0 8px var(--secondary-color);
+        }
+
+        .timeline-title {
+            font-size: 1.15rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .timeline-meta {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* 專業技能標籤 */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-badge {
+            background-color: #1f2430;
+            color: #e2e8f0;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            border: 1px solid #2d3446;
+        }
+
+        /* 頁尾 */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid #1f2430;
+            margin-top: 60px;
+        }
+
+        /* 📱 螢幕尺寸大於 768px 時的雙欄排版（桌機/平板橫向） */
+        @media (min-width: 768px) {
+            .main-content {
+                grid-template-columns: 2fr 1fr;
+            }
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 頂部主視覺區塊 -->
+    <header class="hero">
+        <div class="avatar-container">
+            <!-- 這裡預設留空大頭貼，你可以把你的照片檔案命名為 avatar.jpg 放進同資料夾，並替換下方 src -->
+            <img class="avatar" src="PL.jpg" alt="高級遊戲測試工程師">
+        </div>
+        <span class="tag">GAME QA ENGINEER</span>
+        <h1>高級遊戲測試工程師 周博榮</h1>
+        
+        <p class="current-job">現職：高級遊戲測試工程師</p>
+        <p class="current-company">諾辛遊戲測試顧問公司</p>
+    </header>
+
+    <!-- 主要內容區 -->
+    <main class="container main-content">
+        
+        <!-- 左側：榮譽與經歷欄位 -->
+        <section class="card">
+            <h2 class="card-title">榮譽與戰績紀錄</h2>
+            <ul class="timeline">
+                <li class="timeline-item">
+                    <div class="timeline-title">中華台北設計遊戲 特聘分析師</div>
+                    <div class="timeline-meta">國家級戰術分析與賽事數據評估</div>
+                </li>
+                <li class="timeline-item">
+                    <div class="timeline-title">《特戰英豪》FF大賽 － 冠軍</div>
+                    <div class="timeline-meta">頂尖射擊遊戲電競賽事</div>
+                </li>
+                <li class="timeline-item">
+                    <div class="timeline-title">東亞大學射擊遊戲類 － 冠軍</div>
+                    <div class="timeline-meta">跨校際區域電競指標賽事</div>
+                </li>
+                <li class="timeline-item">
+                    <div class="timeline-title">《特戰英豪》台北演出賽 － 第三名</div>
+                    <div class="timeline-meta">高張力城市邀請賽事</div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 右側：專業核心能力欄位 -->
+        <section class="card">
+            <h2 class="card-title">核心專長</h2>
+            <div class="skills-container">
+                <span class="skill-badge">FPS 射擊遊戲專家</span>
+                <span class="skill-badge">戰術與數據分析</span>
+                <span class="skill-badge">遊戲平衡性測試</span>
+                <span class="skill-badge">核心機制錯誤回報</span>
+                <span class="skill-badge">電競賽事戰術制定</span>
+                <span class="skill-badge">QA 測試專案顧問</span>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 頁尾 -->
+    <footer>
+        <p>&copy; 2026 Game Test Engineer Portfolio. Designed for Esports Precision.</p>
+    </footer>
+
+</body>
+</html>
